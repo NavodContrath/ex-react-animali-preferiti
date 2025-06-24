@@ -34,6 +34,10 @@
                 </details >
             )
         }
+        const { createRoot } = ReactDOM
+        const listaAnimali = document.querySelector(".lista-animali")
+        const root = createRoot(listaAnimali)
+        root.render(<ListaAnimali />)
     </script>
 </head>
 
