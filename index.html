@@ -14,24 +14,24 @@
         const { useState, useEffect } = React
         function ListaAnimali() {
             const [animali, setAnimali] = useState([])
-            useEffect(() => {
-                fetch('http://localhost:3333/animals')
-                    .then(res => res.json())
-                    .then(data => setAnimali(data))
-                    .catch(err => console.error(err))
-            }, [])
-            return (
-                <details>
-                    <summary>Animali</summary>
-                    <ul>
-                        {animali.map((animale, index) => {
-                            return (
-                                <li key={index}>{animale.name}</li>
-                            )
-                        })}
-                    </ul>
+            const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"];
+            const randomIndex = Math.floor(Math.random() * animalsChoices.length);
+            const randomAnimal = animalsChoices[randomIndex]
 
-                </details >
+            return (
+                <>
+                    <button onClick={() => { setAnimali([...animali, randomAnimal]) }}>aggiungi animale</button>
+                    <details>
+                        <summary>Animali</summary>
+                        <ul>
+                            {animali.map((animale, index) => {
+                                return (
+                                    <li key={index}>{animale}</li>
+                                )
+                            })}
+                        </ul>
+                    </details >
+                </>
             )
         }
         const { createRoot } = ReactDOM
